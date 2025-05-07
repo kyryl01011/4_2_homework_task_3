@@ -1,15 +1,14 @@
 
 
 class TestItems:
-    def __init__(self):
-        self.endpoint = '/api/v1/items/'
 
     def test_delete_all_items(self, auth_session):
-        items_list: list = auth_session.send_request('GET', f'/api/v1/items/').json().get('data', [])
+        items_list: list = auth_session.send_request('GET', '/api/v1/items/').json().get('data', [])
         for item in items_list:
             auth_session.send_request('DELETE', f'/api/v1/items/{item['id']}')
-        new_list = auth_session.send_request('GET', f'/api/v1/items/').json().get('data', [])
+        new_list = auth_session.send_request('GET', '/api/v1/items/').json().get('data', [])
         assert new_list == []
+
 
     def test_successful_item_create(self, auth_session, item_data):
         generated_item_data = item_data()
@@ -17,24 +16,24 @@ class TestItems:
         response_dict = create_item_response.json()
         assert response_dict['title'] == generated_item_data['title'], f'Generated title: {generated_item_data['title']} not equals to created: {response_dict['title']}'
         assert response_dict['description'] == generated_item_data['description'], f'Generated desc: {generated_item_data['description']} not equals to created: {response_dict['description']}'
-        return response_dict['id']
+        return response_dict
 
     def test_negative_item_create(self, auth_session, item_data):
         generated_item_data = item_data()
-        create_item_response = auth_session.send_request('POST', '/api/v1/items/', generated_item_data, expected_status_code=422)
+        create_item_response = auth_session.send_request('POST', '/api/v1/items/', {'title': ''}, expected_status_code=422)
         response_dict = create_item_response.json()
         assert type(response_dict['detail'][0]['loc'][0]) is str
 
     def test_pagination_with_twenty_items_creation(self, auth_session, item_data):
         created_items_ids = []
         for item in range(20):
-            created_item_id = self.test_successful_item_create(auth_session, item_data)
+            created_item_id = self.test_successful_item_create(auth_session, item_data)['id']
             created_items_ids.append(created_item_id)
         return created_items_ids
 
     def test_get_all_items_list(self, auth_session, item_data):
         items_ids_list = self.test_pagination_with_twenty_items_creation(auth_session, item_data)
-        all_items_response = auth_session.send_request('GET', f'/api/v1/items/')
+        all_items_response = auth_session.send_request('GET', '/api/v1/items/')
         all_items_data = all_items_response.json().get('data', [])
         all_items_count = all_items_response.json()['count']
         assert all_items_response.json()['count'], f'"count" key cant be found in response: {all_items_response.json()}'
@@ -46,6 +45,16 @@ class TestItems:
         assert type(all_items_count) is int, ''
 
     def test_full_update_item_by_id(self, auth_session, item_data):
-        initial_item_id = self.test_successful_item_create(auth_session, item_data)
+        initial_item = self.test_successful_item_create(auth_session, item_data)
         fresh_item_data = item_data()
-        update_response = auth_session.send_request('PUT', f'')
+        update_response = auth_session.send_request('PUT', f'/api/v1/items/{initial_item['id']}', json=fresh_item_data).json()
+        for key in update_response.keys(): # чисто для практики циклов, вместо 2 ассертов
+            if key not in ('id', 'owner_id'):
+                assert initial_item[key] != update_response[key], f'Field {key} did not change: initial {initial_item[key]}, new one {update_response[key]}'
+
+    def test_delete_item_by_id(self, auth_session, item_data):
+        initial_item_id = self.test_successful_item_create(auth_session, item_data)['id']
+        delete_response = auth_session.send_request('DELETE', f'/api/v1/items/{initial_item_id}')
+        assert delete_response.json()['message'] == 'Item deleted successfully', f'Delete response has no message confirmation: {delete_response.json()['message']}'
+        addition_check_response = auth_session.send_request('GET', f'/api/v1/items/{initial_item_id}', expected_status_code=404)
+        assert addition_check_response.json()['detail'] == 'Item not found', f'Delete response has no message confirmation: {addition_check_response.json()['detail']}'

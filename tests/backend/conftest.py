@@ -17,7 +17,6 @@ def session():
 def auth_session(session):
     requester = CustomRequester(session)
     response = requester.send_request('POST', '/api/v1/login/access-token', data=AUTH_DATA)
-    # response = requests.post(f'{BASE_URL}/api/v1/login/access-token', data=AUTH_DATA, headers=session.headers)
     token = response.json()['access_token']
     requester.session.headers.update(API_HEADERS)
     requester.session.headers.update({'Authorization': 'Bearer ' + token})
@@ -42,4 +41,4 @@ def item_data(auth_session):
     for item_title in created_items:
         for item in items_list:
             if item_title == item['title']:
-                print(item['id'])
+                auth_session.send_request('DELETE', f'/api/v1/items/{item['id']}')
