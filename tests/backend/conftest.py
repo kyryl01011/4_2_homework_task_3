@@ -2,7 +2,7 @@ import pytest
 import requests
 
 from custom_requester.custom_requester import CustomRequester
-from enums.constant import AUTH_HEADERS, AUTH_DATA, BASE_URL, API_HEADERS
+from enums.constant import AUTH_HEADERS, AUTH_DATA, API_HEADERS
 from utils.data_generator import DataGenerator
 
 
