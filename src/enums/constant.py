@@ -1,4 +1,4 @@
-from utils.helpers import TEST_EMAIL, TEST_PASS
+from src.utils.helpers import TEST_EMAIL, TEST_PASS
 
 BASE_URL = "https://api.pomidor-stage.ru"
 

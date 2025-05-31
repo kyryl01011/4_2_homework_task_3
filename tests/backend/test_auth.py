@@ -1,4 +1,4 @@
-from utils.helpers import TEST_EMAIL
+from src.utils.helpers import TEST_EMAIL
 
 
 class TestAuth:
