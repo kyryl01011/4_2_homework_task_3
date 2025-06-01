@@ -1,7 +1,9 @@
+from http import HTTPStatus
+
 from pydantic import BaseModel
 from requests import Session
 
-from src.enums.constant import BASE_URL
+from src.consts import BASE_URL
 
 
 class CustomRequester:
@@ -12,10 +14,13 @@ class CustomRequester:
     def get_url(self, endpoint):
         return self._base_url + endpoint
 
-    def send_request(self, method, endpoint, json: BaseModel | None, data=None, expected_status_code=200):
-        response = self.session.request(method, self.get_url(endpoint), json=json.model_dump(), data=data)
+    def send_request(self, method, endpoint, json: BaseModel | None = None, data=None, expected_status_code=HTTPStatus.OK):
+        if json:
+            json = json.model_dump()
 
-        print(f'''<><><><><>
+        response = self.session.request(method, self.get_url(endpoint), json=json, data=data)
+
+        print(f'''\n<><><><><>
     ---REQUEST---
     {response.request.method}
     {response.request.url}
