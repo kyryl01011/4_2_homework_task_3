@@ -2,7 +2,7 @@ import pytest
 import requests
 
 from src.api.api_manager import ApiManager
-from src.api.items_scenarios import ItemsScenarios
+from src.scenarios.items_scenarios import ItemsScenarios
 from src.data_models.items import CreationItemModel, ItemModel
 from src.consts import AUTH_HEADERS
 from src.utils.data_generator import DataGenerator
