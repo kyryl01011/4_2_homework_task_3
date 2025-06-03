@@ -2,14 +2,18 @@ from pydantic import BaseModel
 from typing import List, ClassVar, Any
 
 
-# Data required for item creation
 class CreationItemModel(BaseModel):
+    """
+    Model of initial data required to create item
+    """
     title: str
     description: str | None = None
 
 
-# Data included in response of existing item
 class ItemModel(BaseModel):
+    """
+    Model of existing item data
+    """
     created_items_ids: ClassVar[set[Any]] = set()
 
     title: str

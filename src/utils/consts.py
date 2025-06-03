@@ -1,5 +1,6 @@
 from src.utils.helpers import TEST_EMAIL, TEST_PASS
 
+
 BASE_URL = "https://api.pomidor-stage.ru"
 
 AUTH_HEADERS = {

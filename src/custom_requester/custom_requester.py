@@ -3,7 +3,7 @@ from http import HTTPStatus
 from pydantic import BaseModel
 from requests import Session
 
-from src.consts import BASE_URL
+from src.utils.consts import BASE_URL
 
 
 class CustomRequester:
