@@ -4,7 +4,7 @@ from src.custom_requester.custom_requester import CustomRequester
 
 
 class ItemsApiClient(CustomRequester):
-    _BASE_ENDPOINT = '/api/v1/items/'
+    _BASE_ENDPOINT = 'items/'
 
     def get_items_list(self, expected_status_code=HTTPStatus.OK):
         response = self.send_request('GET', self._BASE_ENDPOINT, expected_status_code=expected_status_code)

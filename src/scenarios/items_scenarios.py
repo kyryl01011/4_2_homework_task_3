@@ -4,7 +4,7 @@ from src.api.api_manager import ApiManager
 from src.data_models.errors import HTTPValidationErrorModel
 from src.data_models.items import CreationItemModel, ItemModel, ItemsListModel, DeleteItemResponseModel, \
     ItemNotFoundModel
-from src.utils.validate_response import validate_response
+from src.utils.response_validator import validate_response
 
 
 class ItemsScenarios:
@@ -12,10 +12,10 @@ class ItemsScenarios:
         self.api_manager = api_manager
 
     def create_item(self, item_data: CreationItemModel, expected_status_code=HTTPStatus.OK):
-        created_item_response = self.api_manager.items_api_client.create_item(item_data,
-                                                                              expected_status_code=expected_status_code)
+        created_item_response = self.api_manager.items_api_client.create_item(
+            item_data,
+            expected_status_code=expected_status_code)
         created_item_model: ItemModel = validate_response(created_item_response, ItemModel)
-
         verify_creation_response = self.get_item_by_id(created_item_model.id)
 
         assert item_data.title == verify_creation_response.title, \
@@ -40,8 +40,9 @@ class ItemsScenarios:
     def create_item_negative(self, item_data: CreationItemModel, expected_status_code=422):
         created_item_response = self.api_manager.items_api_client.create_item(item_data,
                                                                               expected_status_code=expected_status_code)
-        creation_error_model: HTTPValidationErrorModel = validate_response(created_item_response,
-                                                                           HTTPValidationErrorModel)
+        creation_error_model: HTTPValidationErrorModel = validate_response(
+            created_item_response,
+            HTTPValidationErrorModel)
         error_model = creation_error_model.detail[0]
 
         assert error_model.type == 'string_too_short', f'Unexpected error type: {error_model.type}'

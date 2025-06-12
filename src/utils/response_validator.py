@@ -1,16 +1,18 @@
-from json import JSONDecodeError
-from typing import Type
+from typing import Type, TypeVar
 
 import pytest
 from pydantic import BaseModel
 from requests import Response
 
 
+ModelType = TypeVar('ModelType', bound=BaseModel)
+
+
 def validate_response(
         response: Response,
-        model: Type[BaseModel],
+        model: Type[ModelType],
         expected_data_model: BaseModel | None = None
-) -> BaseModel:
+) -> ModelType:
     try:
         response_json = response.json()
     except Exception as e:

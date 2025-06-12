@@ -4,7 +4,7 @@ import requests
 from src.api.api_manager import ApiManager
 from src.scenarios.items_scenarios import ItemsScenarios
 from src.data_models.items import CreationItemModel, ItemModel
-from src.utils.consts import AUTH_HEADERS
+from src.enums.url_components import AUTH_HEADERS
 from src.utils.data_generator import DataGenerator
 
 
@@ -19,7 +19,7 @@ def session():
 @pytest.fixture(scope='session')
 def authed_api_manager(session):
     api_manager = ApiManager(session)
-    api_manager.auth_api.auth_current_session()
+    api_manager.auth_api_client.auth_current_session()
     return api_manager
 
 

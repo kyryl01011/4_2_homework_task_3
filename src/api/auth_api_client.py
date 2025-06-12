@@ -1,5 +1,5 @@
 from src.custom_requester.custom_requester import CustomRequester
-from src.utils.consts import AUTH_DATA, API_HEADERS
+from src.enums.url_components import AUTH_DATA, API_HEADERS
 
 
 class AuthApi(CustomRequester):
