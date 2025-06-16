@@ -1,126 +1,134 @@
-# Автоматизированные Тесты для Pomidor Dashboard
+Excellent point\! Writing `README.md` files in English is a crucial best practice for open-source projects and collaborative environments, ensuring accessibility for a global audience.
 
-## 📝 Описание Проекта
+Here's the English version of the proposed `README.md` for your project, following the best practices and your requirements:
 
-Этот репозиторий содержит набор автоматизированных тестов, разработанных для проверки базовой функциональности веб-приложения **[Pomidor Dashboard]([https://dashboard.pomidor-stage.ru/](https://dashboard.pomidor-stage.ru/))**.
+-----
 
-Тесты написаны на **Python** с использованием тестового фреймворка **Pytest**. Для взаимодействия с браузером и выполнения UI-тестов используется библиотека **Playwright**, а для генерации красивых и информативных отчетов — **Allure Reports**.
+# Automated Tests for Pomidor Dashboard
 
-Цель проекта — обеспечить стабильность ключевых пользовательских сценариев и API-взаимодействий на тестовом окружении Pomidor Dashboard.
+## 📝 Project Description
 
-## 🚀 Требования
+This repository contains a suite of automated tests developed to verify the basic functionality of the web application **Pomidor Dashboard** ([https://dashboard.pomidor-stage.ru/](https://dashboard.pomidor-stage.ru/)).
 
-Для успешного запуска автотестов на вашем локальном компьютере убедитесь, что у вас установлены следующие инструменты:
+The tests are written in **Python** using the **Pytest** testing framework. **Playwright** is utilized for browser interaction and UI testing, while **Allure Reports** are used for generating clear and informative test reports.
 
-  * **Python 3.9+** (рекомендуется использовать последнюю стабильную версию)
-  * **Git** (для клонирования репозитория)
-  * **Node.js** и **npm** (требуется для установки Playwright Browser Drivers, Playwright CLI обычно устанавливает их автоматически, но Node.js необходим для Playwright)
-  * **Allure Commandline** (для генерации и просмотра Allure Reports)
+The project aims to ensure the stability of key user scenarios and API interactions on the Pomidor Dashboard staging environment.
 
-## 🛠️ Установка и Настройка
+## 🚀 Requirements
 
-Следуйте этим пошаговым инструкциям для подготовки вашего окружения и запуска тестов.
+To successfully run these automated tests on your local machine, please ensure you have the following tools installed:
 
-### 1\. Клонирование репозитория
+  * **Python 3.9+** (latest stable version is recommended)
+  * **Git** (for cloning the repository)
+  * **Node.js** and **npm** (required for Playwright Browser Drivers installation; Playwright CLI usually handles this, but Node.js is necessary)
+  * **Allure Commandline** (for generating and viewing Allure Reports)
 
-Откройте терминал или командную строку и выполните следующую команду:
+## 🛠️ Installation and Setup
+
+Follow these step-by-step instructions to prepare your environment and install the necessary dependencies.
+
+### 1\. Clone the Repository
+
+Open your terminal or command prompt and execute the following command:
 
 ```bash
 git clone https://github.com/kyryl01011/4_2_homework_task_3.git
 cd 4_2_homework_task_3
 ```
 
-### 2\. Создание и активация виртуального окружения
+### 2\. Create and Activate a Virtual Environment
 
-Настоятельно рекомендуется использовать виртуальное окружение, чтобы избежать конфликтов зависимостей с другими проектами.
+It is highly recommended to use a virtual environment to manage project dependencies and avoid conflicts with other Python projects.
 
 ```bash
 python3 -m venv venv
 ```
 
-После создания виртуального окружения, активируйте его:
+After creating the virtual environment, activate it:
 
-  * **Для macOS / Linux:**
+  * **For macOS / Linux:**
     ```bash
     source venv/bin/activate
     ```
-  * **Для Windows (PowerShell):**
+  * **For Windows (PowerShell):**
     ```powershell
     .\venv\Scripts\Activate.ps1
     ```
-  * **Для Windows (Command Prompt / CMD):**
+  * **For Windows (Command Prompt / CMD):**
     ```cmd
     .\venv\Scripts\activate.bat
     ```
 
-### 3\. Установка зависимостей Python
+### 3\. Install Python Dependencies
 
-Установите все необходимые Python-библиотеки, перечисленные в файле `requirements.txt`:
+Install all required Python libraries listed in the `requirements.txt` file:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4\. Установка браузерных драйверов Playwright
+### 4\. Install Playwright Browser Drivers
 
-Playwright требуется установить браузерные драйверы для Chromium, Firefox и WebKit.
+Playwright needs to download and install browser drivers for Chromium, Firefox, and WebKit.
 
 ```bash
 playwright install
 ```
 
-### 5\. Установка Allure Commandline
+### 5\. Install Allure Commandline
 
-Для генерации и просмотра Allure Reports вам потребуется инструмент Allure Commandline. Если у вас его еще нет, установите его в соответствии с вашей операционной системой:
+To generate and view Allure Reports, you will need the Allure Commandline tool. If you don't have it installed, follow the instructions for your operating system:
 
-  * **macOS (используя Homebrew):**
+  * **macOS (using Homebrew):**
     ```bash
     brew install allure
     ```
-  * **Windows (используя Chocolatey):**
+  * **Windows (using Chocolatey):**
     ```bash
     choco install allure
     ```
-  * **Linux:** Подробные инструкции для различных дистрибутивов можно найти в официальной документации Allure: [Allure Docs](https://www.google.com/search?q=https://docs.qameta.io/allure/%23_install_a_commandline)
+  * **Linux:** Detailed instructions for various distributions can be found in the official Allure documentation: [Allure Docs](https://www.google.com/search?q=https://docs.qameta.io/allure/%23_install_a_commandline)
 
-## 🚀 Запуск Тестов
+## 🚀 Running Tests
 
-После завершения установки и настройки вы готовы к запуску тестов.
+Once the installation and setup are complete, you are ready to run the tests.
 
-### Запуск всех тестов и генерация Allure-отчета
+### Run All Tests and Generate Allure Report
 
-Эта команда выполнит все тесты, найденные Pytest, и сохранит результаты для Allure в директории `allure-results/`.
+This command will execute all tests discovered by Pytest and save the Allure results to the `allure-results/` directory.
 
 ```bash
 python -m pytest --alluredir=allure-results
 ```
 
-## 📊 Просмотр Allure Reports
+## 📊 Viewing Allure Reports
 
-После успешного выполнения тестов и сохранения результатов вы можете сгенерировать и просмотреть интерактивный отчет Allure.
+After successfully running the tests and saving the results, you can generate and view the interactive Allure report.
 
-### 1\. Генерация отчета
+### 1\. Generate the Report
 
-Эта команда берет собранные результаты из `allure-results/`, генерирует HTML-отчет и сохраняет его в директории `allure-report/`.
+This command takes the collected test results from `allure-results/`, generates the HTML report, and saves it to the `allure-report/` directory.
 
 ```bash
 allure generate allure-results --clean -o allure-report
 ```
 
-  * `--clean`: Удаляет предыдущие результаты отчета перед новой генерацией.
-  * `-o allure-report`: Указывает директорию для сохранения сгенерированного отчета.
+  * `--clean`: Deletes previous report data before generating a new one.
+  * `-o allure-report`: Specifies the output directory for the generated report.
 
-### 2\. Открытие отчета в браузере
+### 2\. Open the Report in Your Browser
 
-После генерации отчета, вы можете открыть его в вашем веб-браузере:
+Once the report is generated, you can open it in your default web browser:
 
 ```bash
 allure open allure-report
 ```
 
-## 📚 Документация Pomidor Dashboard API
+## 📚 Pomidor Dashboard API Documentation
 
-Для более глубокого понимания функциональности, которую тестирует данный проект, вы можете обратиться к официальной документации API Pomidor Dashboard:
+For a deeper understanding of the functionality tested by this project, you can refer to the official Pomidor Dashboard API documentation:
 [https://api.pomidor-stage.ru/docs](https://api.pomidor-stage.ru/docs)
 
 -----
+
+From now on, I will provide `README.md` content and similar documentation in English as requested.
