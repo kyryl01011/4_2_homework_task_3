@@ -74,6 +74,20 @@ To generate and view Allure Reports, you will need the Allure Commandline tool. 
     ```
   * **Linux:** Detailed instructions for various distributions can be found in the official Allure documentation: [Allure Docs](https://www.google.com/search?q=https://docs.qameta.io/allure/%23_install_a_commandline)
 
+### 5\. Configure Environment Variables
+
+This project uses environment variables to store sensitive information (like API credentials) or configurable parameters.
+
+1.  **Create a `.env` file:** Copy the provided `env-copy` file and rename it to `.env` in the root directory of the project.
+
+    ```bash
+    cp env-copy .env
+    ```
+
+    *(For Windows CMD, use `copy env-copy .env`)*
+
+2.  **Edit the `.env` file:** Open the newly created `.env` file and fill in your specific credentials or configuration details according to the template provided inside.
+
 ## 🚀 Running Tests
 
 Once the installation and setup are complete, you are ready to run the tests.
