@@ -1,20 +1,19 @@
-# Automated Tests for Pomidor Dashboard
+# Automated API Tests for Pomidor Dashboard
 
 ## 📝 Project Description
 
-This repository contains a suite of automated tests developed to verify the basic functionality of the web application **Pomidor Dashboard** ([https://dashboard.pomidor-stage.ru/](https://dashboard.pomidor-stage.ru/)).
+This repository contains a suite of automated API tests developed to verify the basic functionality of the web application **Pomidor Dashboard** ([https://dashboard.pomidor-stage.ru/](https://dashboard.pomidor-stage.ru/)).
 
-The tests are written in **Python** using the **Pytest** testing framework. **Playwright** is utilized for browser interaction and UI testing, while **Allure Reports** are used for generating clear and informative test reports.
+The tests are written in **Python** using the **Pytest** testing framework. For generating clear and informative reports, **Allure Reports** are used.
 
-The project aims to ensure the stability of key user scenarios and API interactions on the Pomidor Dashboard staging environment.
+The primary goal of this project is to ensure the stability and correctness of the critical API endpoints for the Pomidor Dashboard staging environment.
 
 ## 🚀 Requirements
 
-To successfully run these automated tests on your local machine, please ensure you have the following tools installed:
+To successfully run these automated API tests on your local machine, please ensure you have the following tools installed:
 
   * **Python 3.9+** (latest stable version is recommended)
   * **Git** (for cloning the repository)
-  * **Node.js** and **npm** (required for Playwright Browser Drivers installation; Playwright CLI usually handles this, but Node.js is necessary)
   * **Allure Commandline** (for generating and viewing Allure Reports)
 
 ## 🛠️ Installation and Setup
@@ -61,15 +60,7 @@ Install all required Python libraries listed in the `requirements.txt` file:
 pip install -r requirements.txt
 ```
 
-### 4\. Install Playwright Browser Drivers
-
-Playwright needs to download and install browser drivers for Chromium, Firefox, and WebKit.
-
-```bash
-playwright install
-```
-
-### 5\. Install Allure Commandline
+### 4\. Install Allure Commandline
 
 To generate and view Allure Reports, you will need the Allure Commandline tool. If you don't have it installed, follow the instructions for your operating system:
 
@@ -120,5 +111,7 @@ allure open allure-report
 
 ## 📚 Pomidor Dashboard API Documentation
 
-For a deeper understanding of the functionality tested by this project, you can refer to the official Pomidor Dashboard API documentation:
+For a deeper understanding of the API functionality tested by this project, you can refer to the official Pomidor Dashboard API documentation:
 [https://api.pomidor-stage.ru/docs](https://api.pomidor-stage.ru/docs)
+
+-----
