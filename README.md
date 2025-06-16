@@ -1,9 +1,3 @@
-Excellent point\! Writing `README.md` files in English is a crucial best practice for open-source projects and collaborative environments, ensuring accessibility for a global audience.
-
-Here's the English version of the proposed `README.md` for your project, following the best practices and your requirements:
-
------
-
 # Automated Tests for Pomidor Dashboard
 
 ## 📝 Project Description
@@ -128,7 +122,3 @@ allure open allure-report
 
 For a deeper understanding of the functionality tested by this project, you can refer to the official Pomidor Dashboard API documentation:
 [https://api.pomidor-stage.ru/docs](https://api.pomidor-stage.ru/docs)
-
------
-
-From now on, I will provide `README.md` content and similar documentation in English as requested.
